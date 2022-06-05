@@ -48,7 +48,6 @@ dependencies {
     implementation(Dependencies.Android.coreKtx)
     implementation(Dependencies.Android.appCompat)
     implementation(Dependencies.Android.material)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     testImplementation(Dependencies.Test.jUnit)
     androidTestImplementation(Dependencies.Test.androidJUnit)
     androidTestImplementation(Dependencies.Test.espresso)
