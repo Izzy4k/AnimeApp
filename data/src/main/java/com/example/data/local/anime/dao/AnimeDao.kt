@@ -1,4 +1,4 @@
-package com.example.data.room.dao
+package com.example.data.local.anime.dao
 
 import androidx.room.Dao
 

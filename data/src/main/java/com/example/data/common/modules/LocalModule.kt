@@ -2,8 +2,8 @@ package com.example.data.common.modules
 
 import android.content.Context
 import androidx.room.Room
-import com.example.data.room.AppDataBase
-import com.example.data.room.dao.AnimeDao
+import com.example.data.local.AppDataBase
+import com.example.data.local.anime.dao.AnimeDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,7 +34,4 @@ object LocalModule {
         }
     }
 
-    @Provides
-    @Singleton
-    fun provideAnimeDao(appDataBase: AppDataBase): AnimeDao = appDataBase.getAnimeDao()
 }
