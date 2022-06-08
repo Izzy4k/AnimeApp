@@ -15,7 +15,7 @@ android {
     defaultConfig {
         minSdk = Config.minSDK
         targetSdk = Config.targetSDK
-
+        buildConfigField("String", "BASE_URL", "\"https://api.jikan.moe/v4/\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
