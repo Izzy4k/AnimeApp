@@ -48,6 +48,7 @@ dependencies {
     androidTestImplementation(Dependencies.Test.androidJUnit)
     androidTestImplementation(Dependencies.Test.espresso)
     androidTestImplementation(Dependencies.Test.uiAutomator)
+    implementation(project(":core"))
 
     //Hilt
     implementation(Dependencies.Hilt.android)
