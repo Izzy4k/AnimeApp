@@ -4,7 +4,7 @@ import com.example.animeapp.databinding.FragmentHomeBinding
 import com.example.core.base.BaseFragment
 
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(
+class AnimeFragment : BaseFragment<FragmentHomeBinding>(
     FragmentHomeBinding::inflate
 ) {
 

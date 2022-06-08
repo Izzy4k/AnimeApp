@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/animeFragment">
+
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.animeapp.ui.fragment.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/animeFragment"
+        android:name="com.example.animeapp.ui.fragment.AnimeFragment"
+        android:label="fragment_anime"
+        tools:layout="@layout/fragment_anime" />
 </navigation>
