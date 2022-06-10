@@ -4,7 +4,6 @@ import com.example.core.base.BaseResult
 import com.example.core.base.PendingResult
 import com.example.core.base.SuccessResult
 import com.example.data.network.anime.apiservices.AnimeApi
-import com.example.data.network.anime.dto.AnimeTopDto
 import com.example.domain.anime.entity.Anime
 import com.example.domain.anime.repo.AnimeRepository
 import kotlinx.coroutines.flow.Flow
@@ -29,7 +28,6 @@ class AnimeRepositoryImpl @Inject constructor(
         val result = animeApi.getAnimeSearch(name)
         emit(PendingResult)
         if (result.isSuccessful) {
-      //      emit(SuccessResult<Anime>(result.body()))
         }
     }
 

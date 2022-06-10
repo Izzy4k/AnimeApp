@@ -1,6 +1,8 @@
 package com.example.data.common.modules
 
 import com.example.data.BuildConfig.BASE_URL
+import com.example.data.network.anime.apiservices.AnimeApi
+import com.example.data.network.anime.repo.AnimeRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,4 +38,8 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideInterceptor() = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+
+    @Provides
+    @Singleton
+    fun provideAnimeRepository(animeApi: AnimeApi) = AnimeRepositoryImpl(animeApi)
 }

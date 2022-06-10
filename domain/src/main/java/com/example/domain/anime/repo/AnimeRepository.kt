@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface AnimeRepository {
     suspend fun getRandomAnime(): Flow<BaseResult<Anime, String>>
+    suspend fun getAnimeBySearch(name: String): Flow<BaseResult<Anime, String>>
 }
