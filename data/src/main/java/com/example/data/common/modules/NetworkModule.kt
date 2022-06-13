@@ -17,7 +17,7 @@ import javax.inject.Singleton
 object NetworkModule {
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient) = Retrofit.Builder().apply {
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder().apply {
         baseUrl(BASE_URL)
         addConverterFactory(GsonConverterFactory.create())
         client(okHttpClient)
@@ -25,7 +25,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(interceptor: HttpLoggingInterceptor) =
+    fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient().newBuilder().apply {
             connectTimeout(30, TimeUnit.SECONDS)
             readTimeout(30, TimeUnit.SECONDS)
@@ -35,5 +35,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideInterceptor() = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    fun provideInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 }

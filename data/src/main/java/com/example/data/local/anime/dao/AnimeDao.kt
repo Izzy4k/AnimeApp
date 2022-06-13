@@ -2,6 +2,6 @@ package com.example.data.local.anime.dao
 
 import androidx.room.Dao
 
-@Dao
+//@Dao
 interface AnimeDao {
 }

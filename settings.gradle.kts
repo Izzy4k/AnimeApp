@@ -13,7 +13,7 @@ pluginManagement {
                 useVersion("1.5.31")
             }
             if (requested.id.id.startsWith("dagger.hilt.android")) {
-                useModule("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
+                useModule("com.google.dagger:hilt-android-gradle-plugin:2.42")
             }
             if(requested.id.id.startsWith("androidx.navigation")){
                 useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.4.2")

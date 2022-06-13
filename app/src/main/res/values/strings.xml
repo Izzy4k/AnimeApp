@@ -2,4 +2,8 @@
     <string name="app_name">AnimeApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="anime">Аниме</string>
+    <string name="manga">Манга</string>
+    <string name="favorite">Избранное</string>
+    <string name="profile">Профиль</string>
 </resources>

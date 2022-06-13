@@ -48,6 +48,7 @@ dependencies {
     implementation(Dependencies.Android.coreKtx)
     implementation(Dependencies.Android.appCompat)
     implementation(Dependencies.Android.material)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     testImplementation(Dependencies.Test.jUnit)
     androidTestImplementation(Dependencies.Test.androidJUnit)
     androidTestImplementation(Dependencies.Test.espresso)
@@ -70,6 +71,8 @@ dependencies {
     //Nav component
     implementation(Dependencies.NavigationComponent.nav_fragment)
     implementation(Dependencies.NavigationComponent.nav_ui)
+    //Paging v3
+    implementation(Dependencies.Paging.paging_v3)
 
     //Youtube Player
     implementation(Dependencies.YoutubePlayer.core)

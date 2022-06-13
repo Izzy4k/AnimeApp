@@ -61,4 +61,7 @@ dependencies {
     implementation(Dependencies.Lifecycle.lifecycleKtx)
     implementation(Dependencies.Lifecycle.lifecycleViewModel)
     implementation(Dependencies.Lifecycle.lifecycleFragment)
+
+    //Paging v3
+    implementation(Dependencies.Paging.paging_v3)
 }
