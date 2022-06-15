@@ -12,14 +12,18 @@
         android:label="fragment_anime"
         tools:layout="@layout/fragment_anime" >
         <action
-            android:id="@+id/action_animeFragment_to_detailAnimeFragment"
-            app:destination="@id/detailAnimeFragment" />
+            android:id="@+id/action_animeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/mangaFragment"
         android:name="com.example.animeapp.ui.fragment.manga.MangaFragment"
         android:label="fragment_manga"
-        tools:layout="@layout/fragment_manga" />
+        tools:layout="@layout/fragment_manga" >
+        <action
+            android:id="@+id/action_mangaFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.animeapp.ui.fragment.favorite.FavoriteFragment"
@@ -31,12 +35,12 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/detailAnimeFragment"
-        android:name="com.example.animeapp.ui.fragment.detail_anime.DetailAnimeFragment"
-        android:label="fragment_detail_anime"
-        tools:layout="@layout/fragment_detail_anime" >
+        android:id="@+id/detailFragment"
+        android:name="com.example.animeapp.ui.fragment.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
         <argument
-            android:name="id"
-            app:argType="integer" />
+            android:name="arg"
+            app:argType="com.example.animeapp.ultils.Arguments" />
     </fragment>
 </navigation>
