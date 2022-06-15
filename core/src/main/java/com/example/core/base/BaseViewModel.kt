@@ -22,11 +22,11 @@ abstract class BaseViewModel : ViewModel() {
         _state.value = BaseFragmentState.ShowToast(message)
     }
 
-    private fun hideLoading() {
+    protected fun hideLoading() {
         _state.value = BaseFragmentState.IsLoading(false)
     }
 
-    private fun setLoading() {
+    protected fun setLoading() {
         _state.value = BaseFragmentState.IsLoading(true)
     }
 

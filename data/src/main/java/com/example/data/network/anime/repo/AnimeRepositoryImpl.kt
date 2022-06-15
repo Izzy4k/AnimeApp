@@ -8,6 +8,7 @@ import com.example.core.base.ErrorResult
 import com.example.core.base.PendingResult
 import com.example.core.base.SuccessResult
 import com.example.data.common.utils.mappers.AnimeDtoToData
+import com.example.data.common.utils.mappers.BodyListDtoToListData
 import com.example.data.network.anime.apiservices.AnimeApi
 import com.example.data.network.anime.dto.AnimeDto
 import com.example.data.network.anime.source.AnimePageLoader
@@ -19,6 +20,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlin.random.Random
 
 class AnimeRepositoryImpl @Inject constructor(
     private val animeApi: AnimeApi
@@ -26,18 +28,19 @@ class AnimeRepositoryImpl @Inject constructor(
 
     private val list = mutableListOf<Anime>()
 
-    private val animeDtoToData = AnimeDtoToData()
+    private val bodyListDtoToListData = BodyListDtoToListData()
+
+    private val random = Random(10).nextInt(500)
 
     override suspend fun getRandomAnime(): Flow<BaseResult<List<Anime>, String>> {
         return flow {
-            val result = animeApi.getRandomAnime()
+            val result = animeApi.getTopAnime(random)
             emit(PendingResult)
-            if (list.size >= 4) {
-                list.removeAt(0)
-            }
             if (result.isSuccessful) {
                 val body = result.body()
-                body?.let { list.add(animeDtoToData.invoke(it)) }
+                for (i in 0..4) {
+                    body?.body?.let { list.add(bodyListDtoToListData.invoke(it).random()) }
+                }
                 emit(SuccessResult(list))
             } else {
                 emit(ErrorResult(result.message()))
