@@ -36,6 +36,7 @@ class AnimeRepositoryImpl @Inject constructor(
         return flow {
             val result = animeApi.getTopAnime(random)
             emit(PendingResult)
+            if (list.size >= 4) list.clear()
             if (result.isSuccessful) {
                 val body = result.body()
                 for (i in 0..4) {
