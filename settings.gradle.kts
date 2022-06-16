@@ -2,6 +2,9 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
+        maven {
+            setUrl("https://jitpack.io")
+        }
         mavenCentral()
     }
     resolutionStrategy {
@@ -15,7 +18,7 @@ pluginManagement {
             if (requested.id.id.startsWith("dagger.hilt.android")) {
                 useModule("com.google.dagger:hilt-android-gradle-plugin:2.42")
             }
-            if(requested.id.id.startsWith("androidx.navigation")){
+            if (requested.id.id.startsWith("androidx.navigation")) {
                 useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.4.2")
             }
         }

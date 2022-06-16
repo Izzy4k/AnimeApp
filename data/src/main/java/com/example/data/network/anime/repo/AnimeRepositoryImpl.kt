@@ -7,15 +7,16 @@ import com.example.core.base.BaseResult
 import com.example.core.base.ErrorResult
 import com.example.core.base.PendingResult
 import com.example.core.base.SuccessResult
-import com.example.data.common.utils.mappers.AnimeDtoToData
+import com.example.data.common.utils.mappers.AnimeDtoToPaging
 import com.example.data.common.utils.mappers.BodyListDtoToListData
 import com.example.data.network.anime.apiservices.AnimeApi
-import com.example.data.network.anime.dto.AnimeDto
 import com.example.data.network.anime.source.AnimePageLoader
 import com.example.data.network.anime.source.AnimePagingSource
 import com.example.domain.anime.entity.Anime
+import com.example.domain.anime.entity.AnimePaging
 import com.example.domain.anime.repo.AnimeRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
@@ -26,32 +27,27 @@ class AnimeRepositoryImpl @Inject constructor(
     private val animeApi: AnimeApi
 ) : AnimeRepository {
 
-    private val list = mutableListOf<Anime>()
 
     private val bodyListDtoToListData = BodyListDtoToListData()
 
-    private val random = Random(10).nextInt(500)
+    private val animeDtoToPaging = AnimeDtoToPaging()
 
-    override suspend fun getRandomAnime(): Flow<BaseResult<List<Anime>, String>> {
-        return flow {
-            val result = animeApi.getTopAnime(random)
-            emit(PendingResult)
-            if (list.size >= 4) list.clear()
-            if (result.isSuccessful) {
-                val body = result.body()
-                for (i in 0..4) {
-                    body?.body?.let { list.add(bodyListDtoToListData.invoke(it).random()) }
-                }
-                emit(SuccessResult(list))
-            } else {
-                emit(ErrorResult(result.message()))
-            }
+    private val random = (10..100).random()
+
+    override suspend fun getRandomAnime(): Flow<BaseResult<List<Anime>, String>> = flow {
+        val result = animeApi.getTopAnime(random, PAGE_RANDOM)
+        emit(PendingResult)
+        if (result.isSuccessful) {
+            val body = result.body()
+            body?.body?.let { emit(SuccessResult(bodyListDtoToListData.invoke(it))) }
+        } else {
+            emit(ErrorResult(result.message()))
         }
     }
 
     override fun getTopAnime(): Flow<PagingData<Anime>> {
-        val loader: AnimePageLoader = { page ->
-            getAnime(page)
+        val loader: AnimePageLoader = { page, limit ->
+            getAnime(page, limit)
         }
         return Pager(
             config = PagingConfig(
@@ -62,12 +58,13 @@ class AnimeRepositoryImpl @Inject constructor(
         ).flow
     }
 
-    private suspend fun getAnime(page: Int): AnimeDto = withContext(Dispatchers.IO) {
-        val result = animeApi.getTopAnime(page)
-        return@withContext result.body()!!
+    private suspend fun getAnime(page: Int, limit: Int): AnimePaging = withContext(Dispatchers.IO) {
+        val result = animeApi.getTopAnime(page, limit)
+        return@withContext animeDtoToPaging.invoke(result.body()!!)
     }
 
     private companion object {
-        const val PAGE_SIZE = 20
+        const val PAGE_SIZE = 10
+        const val PAGE_RANDOM = 3
     }
 }

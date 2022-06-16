@@ -10,4 +10,9 @@
     <string name="episode_list">Список серий</string>
     <string name="not_found_local">Ничего не найдено.\n Начните добавлять мангу в избранное сейчас!</string>
     <string name="start_search">Начать поиск</string>
+    <string name="episode_chapter">Список глав</string>
+    <string name="new_anime">Новое Аниме</string>
+    <string name="can_not_load_data">Упс, не удалось загрузить данные</string>
+    <string name="try_again">Попробуйте еще раз</string>
+    <string name="name_anime">Название аниме или имя автора</string>
 </resources>

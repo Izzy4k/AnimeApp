@@ -5,11 +5,15 @@ import com.example.data.network.anime.dto.AnimeDto
 import com.example.data.network.anime.dto.Body
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 
 interface AnimeApi {
     @GET(Anime.top)
-    suspend fun getTopAnime(page: Int): Response<AnimeDto>
+    suspend fun getTopAnime(
+        @Query("page") page: Int,
+        @Query("limit") limit: Int
+    ): Response<AnimeDto>
 
     @GET(Anime.random)
     suspend fun getRandomAnime(): Response<Body>

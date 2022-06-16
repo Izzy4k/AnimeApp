@@ -20,6 +20,7 @@ object Dependencies {
         const val material = "com.google.android.material:material:1.6.1"
         const val appCompat = "androidx.appcompat:appcompat:1.4.1"
         const val coil = "io.coil-kt:coil:2.1.0"
+        const val glide = "com.github.bumptech.glide:glide:4.12.0"
     }
 
     object Lifecycle {
@@ -83,6 +84,14 @@ object Dependencies {
 
     object ViewBinding {
         const val binding = "androidx.databinding:viewbinding:7.2.1"
+    }
+
+    object Pager {
+        const val slider = "com.github.smarteist:autoimageslider:1.4.0"
+
+        const val app_compat = "com.github.smarteist:autoimageslider:1.4.0-appcompat"
+
+        const val scaleImage = "com.davemorrissey.labs:subsampling-scale-image-view:3.10.0"
     }
 
 }

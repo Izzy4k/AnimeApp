@@ -1,12 +1,14 @@
 package com.example.animeapp.ui.fragment.anime
 
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
 import com.example.core.base.BaseViewModel
 import com.example.core.base.ErrorResult
 import com.example.core.base.PendingResult
 import com.example.core.base.SuccessResult
 import com.example.domain.anime.entity.Anime
 import com.example.domain.anime.use_case.GetRandomAnimeUseCase
+import com.example.domain.anime.use_case.GetTopAnimeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -15,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AnimeViewModel @Inject constructor(
-    private val getRandomAnimeUseCase: GetRandomAnimeUseCase
+    private val getRandomAnimeUseCase: GetRandomAnimeUseCase,
+    private val getTopAnimeUseCase: GetTopAnimeUseCase
 ) : BaseViewModel() {
 
     private val _animeRandom = MutableStateFlow<List<Anime>>(mutableListOf())
@@ -40,4 +43,6 @@ class AnimeViewModel @Inject constructor(
                 }
         }
     }
+
+    fun getTop(): Flow<PagingData<Anime>> = getTopAnimeUseCase.getTopAnime()
 }

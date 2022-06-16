@@ -8,6 +8,10 @@ plugins {
 repositories {
     google()
     mavenCentral()
+    jcenter()
+    maven {
+        setUrl("https://jitpack.io")
+    }
 
 }
 android {
@@ -56,6 +60,9 @@ dependencies {
     //Coil
     implementation(Dependencies.Android.coil)
 
+    //Glide
+    implementation(Dependencies.Android.glide)
+
     //Hilt
     implementation(Dependencies.Hilt.android)
     kapt(Dependencies.Hilt.compiler)
@@ -77,6 +84,14 @@ dependencies {
     //Youtube Player
     implementation(Dependencies.YoutubePlayer.core)
     implementation(Dependencies.YoutubePlayer.chromecast)
+
+    //Slider
+    implementation(Dependencies.Pager.slider)
+    implementation(Dependencies.Pager.app_compat)
+
+
+    //Scale Image
+    implementation(Dependencies.Pager.scaleImage)
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":core"))
