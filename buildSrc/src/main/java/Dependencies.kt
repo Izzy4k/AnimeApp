@@ -21,6 +21,7 @@ object Dependencies {
         const val appCompat = "androidx.appcompat:appcompat:1.4.1"
         const val coil = "io.coil-kt:coil:2.1.0"
         const val glide = "com.github.bumptech.glide:glide:4.12.0"
+        const val progressBar = "com.github.ybq:Android-SpinKit:1.4.0"
     }
 
     object Lifecycle {

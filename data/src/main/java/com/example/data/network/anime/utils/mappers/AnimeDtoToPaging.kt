@@ -1,4 +1,4 @@
-package com.example.data.common.utils.mappers
+package com.example.data.network.anime.utils.mappers
 
 import com.example.core.base.BaseMapper
 import com.example.data.network.anime.dto.AnimeDto

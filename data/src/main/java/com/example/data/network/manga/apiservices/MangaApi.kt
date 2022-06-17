@@ -1,25 +1,23 @@
-package com.example.data.network.anime.apiservices
+package com.example.data.network.manga.apiservices
 
-import com.example.data.common.utils.Anime
+import com.example.data.common.utils.Manga
 import com.example.data.common.utils.Pagination
-import com.example.data.network.anime.dto.AnimeDto
+import com.example.data.network.manga.dto.MangaDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
-interface AnimeApi {
-    @GET(Anime.search)
-    suspend fun getSearchAnime(
+interface MangaApi {
+    @GET(Manga.search)
+    suspend fun getSearchManga(
         @Query(Pagination.page) page: Int,
         @Query(Pagination.limit) limit: Int,
         @Query("q") search: String
-    ): Response<AnimeDto>
+    ): Response<MangaDto>
 
-    @GET(Anime.top)
-    suspend fun getRandomAnime(
+    @GET(Manga.top)
+    suspend fun getRandomManga(
         @Query(Pagination.page) page: Int,
         @Query(Pagination.limit) limit: Int,
-    ): Response<AnimeDto>
-
+    ): Response<MangaDto>
 }

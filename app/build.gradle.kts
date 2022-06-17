@@ -52,7 +52,6 @@ dependencies {
     implementation(Dependencies.Android.coreKtx)
     implementation(Dependencies.Android.appCompat)
     implementation(Dependencies.Android.material)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     testImplementation(Dependencies.Test.jUnit)
     androidTestImplementation(Dependencies.Test.androidJUnit)
     androidTestImplementation(Dependencies.Test.espresso)
@@ -89,9 +88,12 @@ dependencies {
     implementation(Dependencies.Pager.slider)
     implementation(Dependencies.Pager.app_compat)
 
-
     //Scale Image
     implementation(Dependencies.Pager.scaleImage)
+
+    //SpinKit Progress bar
+    implementation(Dependencies.Android.progressBar)
+
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":core"))

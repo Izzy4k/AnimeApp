@@ -6,10 +6,9 @@ import com.example.domain.anime.repo.AnimeRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetTopAnimeUseCase
-@Inject
-constructor(
+class GetSearchAnimeUseCase @Inject constructor(
     private val repository: AnimeRepository
 ) {
-    fun getTopAnime(): Flow<PagingData<Anime>> = repository.getTopAnime()
+   suspend fun getSearchAnime(searchBy: String): Flow<PagingData<Anime>> =
+        repository.getSearchAnime(searchBy)
 }

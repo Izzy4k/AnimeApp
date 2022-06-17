@@ -1,6 +1,7 @@
 package com.example.animeapp.ui.fragment.anime
 
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -20,11 +21,13 @@ import com.example.animeapp.ultils.Arguments
 import com.example.core.base.BaseFragment
 import com.example.domain.anime.entity.Anime
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 @AndroidEntryPoint
 class AnimeFragment : BaseFragment<FragmentAnimeBinding>(
     FragmentAnimeBinding::inflate
@@ -57,9 +60,31 @@ class AnimeFragment : BaseFragment<FragmentAnimeBinding>(
 
     override fun setupObservers() {
         super.setupObservers()
+        observeSearch()
         observeRandom()
         observeTop()
         observeState()
+    }
+
+    private fun observeSearch() {
+        requireBinding().editSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                val value = requireBinding().editSearch.text.toString().trim()
+                searchBy(value)
+            }
+
+        })
+    }
+
+    private fun searchBy(value: String) {
+        viewModel.setSearchBy(value)
     }
 
     private fun observeState() {
@@ -72,7 +97,7 @@ class AnimeFragment : BaseFragment<FragmentAnimeBinding>(
     }
 
     private fun observeTop() {
-        viewModel.getTop().flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+        viewModel.animeFlow.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
             .onEach { handleTop(it) }.launchIn(lifecycleScope)
     }
 
@@ -90,7 +115,7 @@ class AnimeFragment : BaseFragment<FragmentAnimeBinding>(
     }
 
     private fun getRandom() {
-            viewModel.getRandom()
+        viewModel.getRandom()
     }
 
     override fun onClickListener(id: Int) {

@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 interface AnimeRepository {
     suspend fun getRandomAnime(): Flow<BaseResult<List<Anime>, String>>
 
-    fun getTopAnime(): Flow<PagingData<Anime>>
+    suspend fun getSearchAnime(searchBy: String): Flow<PagingData<Anime>>
 }

@@ -87,9 +87,10 @@
                     app:sliderIndicatorGravity="center_horizontal|bottom"
                     app:sliderIndicatorPadding="4dp"
                     app:sliderIndicatorRadius="2dp"
+                    app:sliderAutoCycleEnabled="true"
                     app:sliderIndicatorSelectedColor="@color/red"
                     app:sliderIndicatorUnselectedColor="@color/gray"
-                    app:sliderScrollTimeInSec="2"
+                    app:sliderScrollTimeInSec="1"
                     app:sliderStartAutoCycle="true" />
 
                 <TextView
@@ -121,8 +122,10 @@
         app:spanCount="2"
         tools:listitem="@layout/item_anime" />
 
-    <ProgressBar
+    <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/anime_progress"
+        style="@style/SpinKitView.FadingCircle"
+        app:SpinKit_Color="@color/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />

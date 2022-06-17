@@ -5,8 +5,10 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 
 fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -18,6 +20,10 @@ fun View.visible() {
 
 fun View.gone() {
     this.isVisible = false
+}
+
+fun ImageView.loadGlide(url: Any){
+    Glide.with(this).load(url).into(this)
 }
 
 fun Context.isOnline(): Boolean {

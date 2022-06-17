@@ -15,4 +15,6 @@
     <string name="can_not_load_data">Упс, не удалось загрузить данные</string>
     <string name="try_again">Попробуйте еще раз</string>
     <string name="name_anime">Название аниме или имя автора</string>
+    <string name="new_manga">Новая манга</string>
+    <string name="name_manga">Название манги или имя автора</string>
 </resources>
