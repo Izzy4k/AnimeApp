@@ -7,7 +7,8 @@ fun <Input, Output> BaseMapper<Input, Output>.map(input: List<Input>?) =
         invoke(it)
 
     }
-
+// some data
 // test_branch
+// some data
 // git_branch
 // bla bla
