@@ -9,4 +9,6 @@ interface AnimeRepository {
     suspend fun getRandomAnime(): Flow<BaseResult<List<Anime>, String>>
 
     suspend fun getSearchAnime(searchBy: String): Flow<PagingData<Anime>>
+
+    suspend fun getAnimeByID(id: Int):  Flow<BaseResult<Anime, String>>
 }

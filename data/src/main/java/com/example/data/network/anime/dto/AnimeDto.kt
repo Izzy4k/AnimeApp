@@ -8,6 +8,11 @@ data class AnimeDto(
     val pagination: Pagination
 )
 
+data class BodyDto(
+    @SerializedName("data")
+    val body: Body
+)
+
 data class Body(
     val aired: Aired,
     val airing: Boolean,
