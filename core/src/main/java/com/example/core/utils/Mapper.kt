@@ -7,3 +7,5 @@ fun <T, R> Mapper<T, R>.fromToList(input: List<T>) =
         invoke(it)
 
     }
+
+// jkslajdfl
