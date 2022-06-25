@@ -7,3 +7,5 @@ fun <Input, Output> BaseMapper<Input, Output>.map(input: List<Input>?) =
         invoke(it)
 
     }
+
+// test_branch
