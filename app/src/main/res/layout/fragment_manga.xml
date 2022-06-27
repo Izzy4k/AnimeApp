@@ -118,10 +118,12 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:spanCount="2"
-        tools:listitem="@layout/item_anime" />
+        tools:listitem="@layout/item_manga" />
 
-    <ProgressBar
+    <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/manga_progress"
+        style="@style/SpinKitView.FadingCircle"
+        app:SpinKit_Color="@color/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />

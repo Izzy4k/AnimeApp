@@ -1,18 +1,14 @@
 package com.example.data.network.anime.repo
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.core.base.BaseResult
-import com.example.core.base.ErrorResult
-import com.example.core.base.PendingResult
-import com.example.core.base.SuccessResult
+import com.example.core.base.*
 import com.example.data.network.anime.utils.mappers.AnimeDtoToPaging
-import com.example.data.network.anime.utils.mappers.BodyListDtoToListData
 import com.example.data.network.anime.apiservices.AnimeApi
 import com.example.data.network.anime.source.AnimePageLoader
 import com.example.data.network.anime.source.AnimePagingSource
+import com.example.data.network.anime.utils.mappers.AnimeDtoToData
 import com.example.domain.anime.entity.Anime
 import com.example.domain.anime.entity.AnimePaging
 import com.example.domain.anime.repo.AnimeRepository
@@ -26,9 +22,10 @@ class AnimeRepositoryImpl @Inject constructor(
     private val animeApi: AnimeApi
 ) : AnimeRepository {
 
-    private val bodyListDtoToListData = BodyListDtoToListData()
 
     private val animeDtoToPaging = AnimeDtoToPaging()
+
+    private val animeDtoToData = AnimeDtoToData()
 
     private val random = (100..1000).random()
 
@@ -37,13 +34,18 @@ class AnimeRepositoryImpl @Inject constructor(
         emit(PendingResult)
         if (result.isSuccessful) {
             val body = result.body()
-            body?.body?.let { emit(SuccessResult(bodyListDtoToListData.invoke(it))) }
+            body?.body?.let {
+                val temp = animeDtoToData.fromToList(it)
+                if (temp != null) {
+                    emit(SuccessResult(temp))
+                }
+            }
         } else {
             emit(ErrorResult(result.message()))
         }
     }
 
-   override suspend fun getSearchAnime(searchBy: String): Flow<PagingData<Anime>> {
+    override suspend fun getSearchAnime(searchBy: String): Flow<PagingData<Anime>> {
         val loader: AnimePageLoader = { page, limit ->
             getAnime(page, limit, searchBy)
         }

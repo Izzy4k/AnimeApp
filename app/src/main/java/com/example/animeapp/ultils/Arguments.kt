@@ -10,8 +10,7 @@ data class Arguments(
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)

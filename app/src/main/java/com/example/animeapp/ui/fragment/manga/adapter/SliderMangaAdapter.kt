@@ -1,14 +1,14 @@
-package com.example.animeapp.ui.adapter
+package com.example.animeapp.ui.fragment.manga.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import coil.load
 import com.example.animeapp.databinding.ItemSliderBinding
-import com.example.domain.anime.entity.Anime
+import com.example.domain.manga.entity.Manga
 import com.smarteist.autoimageslider.SliderViewAdapter
 
-class SliderAdapter(private val list: List<Anime>) :
-    SliderViewAdapter<SliderAdapter.SliderViewHolder>() {
+class SliderMangaAdapter(private val list: List<Manga>) :
+    SliderViewAdapter<SliderMangaAdapter.SliderViewHolder>() {
     inner class SliderViewHolder(private val binding: ItemSliderBinding) :
         ViewHolder(binding.root) {
         fun onBind(position: Int) {

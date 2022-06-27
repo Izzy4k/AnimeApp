@@ -7,6 +7,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.animeapp.R
 import com.example.animeapp.databinding.ActivityMainBinding
+import com.example.animeapp.ultils.ext.gone
+import com.example.animeapp.ultils.ext.isOnline
+import com.example.animeapp.ultils.ext.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +26,25 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        initBtn()
         initBottomNavigation()
+        controllerObserver()
+    }
+
+    private fun initBtn() {
+        binding.internetCheck.btnEmpty.setOnClickListener {
+            checkInternet()
+        }
+    }
+
+    private fun controllerObserver() {
+        controller.addOnDestinationChangedListener { _, _, _ ->
+            checkInternet()
+        }
+    }
+
+    private fun checkInternet() {
+        if (isOnline()) binding.contInternet.gone() else binding.contInternet.visible()
     }
 
     private fun initBottomNavigation() {

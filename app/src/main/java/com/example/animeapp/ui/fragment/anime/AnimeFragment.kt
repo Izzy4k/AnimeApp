@@ -15,7 +15,7 @@ import com.example.animeapp.R
 import com.example.animeapp.databinding.FragmentAnimeBinding
 import com.example.animeapp.ui.adapter.DefaultLoadAdapter
 import com.example.animeapp.ui.fragment.anime.adapter.AnimeAdapter
-import com.example.animeapp.ui.adapter.SliderAdapter
+import com.example.animeapp.ui.fragment.anime.adapter.SliderAdapter
 import com.example.animeapp.ui.adapter.TryAgainAction
 import com.example.animeapp.ultils.Arguments
 import com.example.core.base.BaseFragment
@@ -76,7 +76,7 @@ class AnimeFragment : BaseFragment<FragmentAnimeBinding>(
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                val value = requireBinding().editSearch.text.toString().trim()
+                val value = requireBinding().editSearch.text.toString()
                 searchBy(value)
             }
 

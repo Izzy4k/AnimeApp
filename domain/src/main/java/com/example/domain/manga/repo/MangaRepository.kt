@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 interface MangaRepository {
     suspend fun getRandomManga(): Flow<BaseResult<List<Manga>, String>>
 
-    fun getTopManga(): Flow<PagingData<Manga>>
+    suspend fun getTopManga(searchBy: String): Flow<PagingData<Manga>>
 }

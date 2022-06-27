@@ -17,4 +17,6 @@
     <string name="name_anime">Название аниме или имя автора</string>
     <string name="new_manga">Новая манга</string>
     <string name="name_manga">Название манги или имя автора</string>
+    <string name="refresh">Обновить</string>
+    <string name="something_went_wrong">Что-то пошло не так</string>
 </resources>

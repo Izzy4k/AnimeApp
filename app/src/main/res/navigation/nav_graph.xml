@@ -29,11 +29,7 @@
         android:name="com.example.animeapp.ui.fragment.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.animeapp.ui.fragment.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.animeapp.ui.fragment.detail.DetailFragment"
@@ -43,4 +39,9 @@
             android:name="arg"
             app:argType="com.example.animeapp.ultils.Arguments" />
     </fragment>
+    <fragment
+        android:id="@+id/searchScreenFragment"
+        android:name="com.example.animeapp.ui.fragment.searchScreen.SearchScreenFragment"
+        android:label="fragment_search_screen"
+        tools:layout="@layout/fragment_search_screen" />
 </navigation>

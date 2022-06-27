@@ -1,6 +1,5 @@
 package com.example.animeapp.ui.fragment.anime
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope

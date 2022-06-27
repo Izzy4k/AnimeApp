@@ -23,13 +23,23 @@
         android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_bot_nav"
+        android:paddingTop="4dp"
+        android:paddingBottom="12dp"
         app:itemTextColor="@drawable/txt_selector"
         app:labelVisibilityMode="labeled"
-        android:paddingBottom="12dp"
-        android:paddingTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/main" />
 
+    <FrameLayout
+        android:id="@+id/cont_internet"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/internet_check"
+            layout="@layout/internet_layout" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
