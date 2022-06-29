@@ -14,9 +14,10 @@ class AnimeLocalRepositoryImpl @Inject constructor(
     private val animeDao: AnimeDao
 ) : AnimeLocalRepository {
 
-    private val animeToAnimeEntity = AnimeToAnimeEntity()
 
     private val animeEntityToAnime = AnimeEntityToAnime()
+
+    private val animeToAnimeEntity = AnimeToAnimeEntity()
 
     override suspend fun checkAnimeData(): Flow<Boolean> = callbackFlow {
         animeDao.getCheckData().collect {
@@ -46,11 +47,12 @@ class AnimeLocalRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun actionAnimeEntity(anime: Anime, isExists: Boolean) {
-        val animeEntity = animeToAnimeEntity.invoke(anime)
+    override suspend fun actionAnimeEntity(anime:Anime,id: Int, isExists: Boolean) {
         if (isExists) {
+            val animeEntity = animeDao.getAnimeEntityById(id)
             animeDao.deleteAnimeEntity(animeEntity)
         } else {
+            val animeEntity = animeToAnimeEntity.invoke(anime)
             animeDao.createAnimeEntity(animeEntity)
         }
     }

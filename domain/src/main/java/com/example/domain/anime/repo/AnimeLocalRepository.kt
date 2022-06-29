@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface AnimeLocalRepository {
     suspend fun checkAnimeData(): Flow<Boolean>
     suspend fun checkExistsAnimeEntity(id: Int): Flow<Boolean>
-    suspend fun actionAnimeEntity(anime: Anime, isExists: Boolean)
+    suspend fun actionAnimeEntity(anime: Anime,id: Int, isExists: Boolean)
     suspend fun getAnimeEntity(): Flow<List<Anime>>
 }

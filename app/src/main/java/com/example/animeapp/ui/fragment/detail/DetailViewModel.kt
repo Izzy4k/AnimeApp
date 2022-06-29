@@ -28,7 +28,6 @@ class DetailViewModel @Inject constructor(
     val checkExistsAnime: StateFlow<Boolean> get() = _checkExistsAnime
 
 
-
     fun checkExistsForAnime(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             checkExistsAnimeEntityUseCase.checkExistsAnimeEntity(id).collect {
@@ -43,7 +42,7 @@ class DetailViewModel @Inject constructor(
                 getAnimeInfoUseCase.getAnimeInfo(id)
                     .stateIn(
                         viewModelScope
-                    ).value, checkExistsAnime.value
+                    ).value, id, checkExistsAnime.value
             )
         }
     }
@@ -53,7 +52,6 @@ class DetailViewModel @Inject constructor(
             viewModelScope
         )
     }
-
 
 
 }

@@ -14,4 +14,7 @@ interface AnimeDao {
 
     @Delete
     suspend fun deleteAnimeEntity(animeEntity: AnimeEntity)
+
+    @Query("SELECT * FROM anime_entity WHERE mal_id =:id")
+    suspend fun getAnimeEntityById(id: Int): AnimeEntity
 }
