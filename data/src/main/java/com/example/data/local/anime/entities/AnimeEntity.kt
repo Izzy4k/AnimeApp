@@ -8,6 +8,7 @@ import com.example.data.common.utils.Anime
 data class AnimeEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val mal_id: Int,
     val title: String,
     val image: String,
     val genre: String

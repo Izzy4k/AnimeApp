@@ -20,4 +20,5 @@
     <dimen name="eighteen">18sp</dimen>
     <dimen name="two_hundred">200dp</dimen>
     <dimen name="four">4dp</dimen>
+    <dimen name="four_eight">48dp</dimen>
 </resources>

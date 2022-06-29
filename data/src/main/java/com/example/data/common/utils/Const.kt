@@ -4,6 +4,9 @@ object Anime {
     const val top = "top/anime"
     const val search = "anime"
     const val name = "anime_entity"
+    const val info = "anime/{id}"
+    const val id = "id"
+    const val episodes = "anime/{id}/episodes"
 }
 
 object Manga {

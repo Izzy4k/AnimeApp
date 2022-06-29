@@ -19,4 +19,7 @@
     <string name="name_manga">Название манги или имя автора</string>
     <string name="refresh">Обновить</string>
     <string name="something_went_wrong">Что-то пошло не так</string>
+    <string name="read">Читать</string>
+    <string name="added">Добавлено</string>
+    <string name="in_favorite">В избранное</string>
 </resources>
