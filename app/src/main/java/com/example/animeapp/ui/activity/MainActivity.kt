@@ -38,8 +38,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun controllerObserver() {
-        controller.addOnDestinationChangedListener { _, _, _ ->
+        controller.addOnDestinationChangedListener { _, dest, _ ->
             checkInternet()
+            if (dest.id == R.id.detailFragment) {
+                binding.botNav.gone()
+            }else{
+                binding.botNav.visible()
+            }
         }
     }
 

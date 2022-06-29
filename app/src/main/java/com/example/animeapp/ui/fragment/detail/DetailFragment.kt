@@ -11,6 +11,7 @@ import com.example.animeapp.R
 import com.example.animeapp.databinding.FragmentDetailBinding
 import com.example.core.base.BaseFragment
 import com.example.domain.anime.entity.Anime
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -20,6 +21,7 @@ import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 @FlowPreview
+@AndroidEntryPoint
 class DetailFragment :
     BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate) {
 
@@ -46,6 +48,9 @@ class DetailFragment :
 
     private fun initBtn() {
         requireBinding().imgFavorite.setOnClickListener {
+            viewModel.actionAnime(arguments.arg.id)
+        }
+        requireBinding().txtFavorite.setOnClickListener {
             viewModel.actionAnime(arguments.arg.id)
         }
     }
@@ -78,14 +83,14 @@ class DetailFragment :
     private fun handleAnimeExists(exists: Boolean) {
         if (exists) {
             setRedTxtFavorite()
-            setAnimeExists()
+            setExists()
         } else {
             setGrayTxtFavorite()
-            setAnimeNotExists()
+            setNotExists()
         }
     }
 
-    private fun setAnimeNotExists() {
+    private fun setNotExists() {
         requireBinding().imgFavorite.load(R.drawable.ic_union)
         requireBinding().txtFavorite.text = getString(R.string.in_favorite)
     }
@@ -99,7 +104,7 @@ class DetailFragment :
         )
     }
 
-    private fun setAnimeExists() {
+    private fun setExists() {
         requireBinding().imgFavorite.load(R.drawable.ic_union_light)
         requireBinding().txtFavorite.text = getString(R.string.added)
     }

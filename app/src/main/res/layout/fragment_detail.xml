@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/main_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="260dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -18,7 +18,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/white">
 
                 <ImageView
@@ -47,60 +47,65 @@
                     app:layout_constraintStart_toStartOf="parent"
                     tools:text="Невероятные Приключения ДжоДжо — Часть 6: Каменный океан" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#F5F5F5"
-                android:layout_gravity="bottom"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/description"
-                    android:textColor="@color/black_light"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/sixteen"
-                    android:textSize="@dimen/fourteen_sp"
-                    tools:text="«Каменный океан» рассказывает историю Джолин Куджо, дочери Куджо Джотаро, заключённую в тюрьму Грин-Долфин-Стрит за преступление, которого она не совершала. Но вместо скучного бытия узницы, Джолин ожидает невероятное приключение, полное жестоких противостояний и потрясающих откровений, ибо где-то внутри этой странной тюрьмы еще..." />
-
-                <TextView
-                    android:id="@+id/txt_episode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/episode_list"
-                    android:textColor="@color/black_light"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
 
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvListEpisode"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginBottom="@dimen/twenty_four"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/item_list_episode" />
+        android:layout_height="360dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F5F5"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/description"
+                android:textColor="@color/black_light"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/sixteen"
+                android:textSize="@dimen/fourteen_sp"
+                tools:text="«Каменный океан» рассказывает историю Джолин Куджо, дочери Куджо Джотаро, заключённую в тюрьму Грин-Долфин-Стрит за преступление, которого она не совершала. Но вместо скучного бытия узницы, Джолин ожидает невероятное приключение, полное жестоких противостояний и потрясающих откровений, ибо где-то внутри этой странной тюрьмы еще..." />
+
+            <TextView
+                android:id="@+id/txt_episode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/episode_list"
+                android:textColor="@color/black_light"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListEpisode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_list_episode" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_bot_nav">
 
         <ImageView
             android:id="@+id/img_favorite"
@@ -128,12 +133,12 @@
             android:layout_marginHorizontal="@dimen/thirty_two"
             android:layout_marginVertical="@dimen/twelve"
             android:background="@drawable/bg_empty"
+            android:text="@string/read"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/fourteen_sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/read"
-            android:textSize="@dimen/fourteen_sp"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
             app:layout_constraintStart_toEndOf="@id/txt_favorite"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
